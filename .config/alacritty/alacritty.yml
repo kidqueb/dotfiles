@@ -1,0 +1,56 @@
+working_directory: /Users/nick/work
+
+window:
+  padding:
+    x: 12
+    y: 12
+  decorations: Buttonless
+  startup_mode: Maximized
+
+font:
+  family: MonoLisa 
+  size: 14
+  offset:
+    x: 1
+    y: 12
+  glyph_offset:
+    x: 0
+    y: 6
+  use_thin_strokes: true
+
+key_bindings:
+  # Use command + [ - to go to previous tmux window
+  - { key: LBracket, mods: Command, chars: "\x5c\x70" }
+  # Use command + ] - to go to previous tmux window
+  - { key: RBracket, mods: Command, chars: "\x5c\x6e" }
+  # ctrl-^ doesn't work in some terminals like alacritty
+  - { key: Key6, mods: Control, chars: "\x1e" }
+
+colors:
+  # Default colors
+  primary:
+    background: '#1f2430'
+    foreground: '#cbccc6'
+    bright_foreground: '#f28779'
+
+  # Normal colors
+  normal:
+    black:   '#212733' #
+    red:     '#f08778' #
+    green:   '#53bf97' #
+    yellow:  '#fdcc60' #
+    blue:    '#60b8d6' # 
+    magenta: '#ec7171' #
+    cyan:    '#98e6ca' #
+    white:   '#fafafa' #
+
+  # Brightened
+  bright:
+    black: '#686868'
+    red: '#f58c7d'
+    green: '#58c49c'
+    yellow: '#ffd165'
+    blue: '#65bddb'
+    magenta: '#f17676'
+    cyan: '#9debcf'
+    white: '#ffffff'

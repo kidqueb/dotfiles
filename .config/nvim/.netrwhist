@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/nick/work/monotonous'
+let g:netrw_dirhist_5='/Users/nick/work/chapter.chat/monorepo'
+let g:netrw_dirhist_4='/Users/nick/work/chapter.chat/monorepo/node_modules'
+let g:netrw_dirhist_3='/Users/nick/work/chapter.chat/monorepo'
+let g:netrw_dirhist_2='/Users/nick/work/chapter.chat/monorepo/migrations'
+let g:netrw_dirhist_1='/Users/nick/work/chapter.chat/monorepo'
