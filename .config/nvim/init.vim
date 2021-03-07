@@ -13,7 +13,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim' " ranger dep
   Plug 'pantharshit00/vim-prisma'
-  Plug 'junegunn/goyo.vim'
 call plug#end()
 
 set guifont
