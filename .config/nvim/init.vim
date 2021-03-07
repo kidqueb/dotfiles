@@ -13,8 +13,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim' " ranger dep
   Plug 'pantharshit00/vim-prisma'
+  Plug 'junegunn/goyo.vim'
 call plug#end()
 
+set guifont
 let mapleader = ","
 filetype plugin on
 set tabstop=2     " number of spaces that a <Tab> in the file counts for
@@ -24,8 +26,10 @@ set shiftround    " round indent to multiple of 'shiftwidth' (for << and >>)
 set ignorecase " ignore case of letters
 set smartcase  " override the 'ignorecase' when there is uppercase letters
 set gdefault   " when on, the :substitute flag 'g' is default on
-set relativenumber
-set scrolloff=25
+set number relativenumber
+set so=100
+set splitbelow
+set splitright
 
 " Coc
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
@@ -47,6 +51,10 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
 " Keys
 nnoremap <C-S> :w<CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 map <C-P> :GFiles<CR>
 
@@ -79,6 +87,23 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"=======================
 " Theme
 set termguicolors
 let ayucolor="mirage"

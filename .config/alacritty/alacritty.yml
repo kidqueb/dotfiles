@@ -1,9 +1,6 @@
 working_directory: /Users/nick/work
 
 window:
-  padding:
-    x: 12
-    y: 12
   decorations: Buttonless
   startup_mode: Maximized
 
