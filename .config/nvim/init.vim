@@ -17,7 +17,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 set guifont
-let mapleader = ","
+let mapleader = ";"
 filetype plugin on
 set tabstop=2     " number of spaces that a <Tab> in the file counts for
 set softtabstop=2 " remove <Tab> symbols as it was spaces
@@ -31,12 +31,18 @@ set so=100
 set splitbelow
 set splitright
 
+let g:NERDCreateDefaultMappings = 1
+
 " Coc
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#fnamemod = ':t'        " disable file paths in the tab                                                    
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Echodoc
 let g:echodoc#enable_at_startup = 1
@@ -55,6 +61,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <Leader>q :bp<CR>
+nnoremap <Leader>e :bn<CR>
+nnoremap <Leader>w :bd<CR>
 
 map <C-P> :GFiles<CR>
 
