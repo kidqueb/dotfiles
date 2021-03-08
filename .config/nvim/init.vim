@@ -78,6 +78,9 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
+" Tailwind Language Server
+" https://www.reddit.com/r/neovim/comments/locmsb/help_setting_up_builtin_lsp_for_csstailwindcss/go7kg8j/?utm_source=reddit&utm_medium=web2x&context=3
+
 lua << EOF
 local lspconfig = require'lspconfig'
 lspconfig.tsserver.setup {}
