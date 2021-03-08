@@ -1,6 +1,4 @@
 call plug#begin('~/.vim/plugged')
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
   Plug 'airblade/vim-rooter'
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -13,9 +11,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim' " ranger dep
   Plug 'pantharshit00/vim-prisma'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
-set guifont
 let mapleader = ";"
 filetype plugin on
 set tabstop=2     " number of spaces that a <Tab> in the file counts for
@@ -51,9 +51,6 @@ let g:echodoc#type = 'virtual'
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-" FZF
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-
 " Keys
 nnoremap <C-S> :w<CR>
 nnoremap <C-J> <C-W><C-J>
@@ -64,7 +61,8 @@ nnoremap <Leader>q :bp<CR>
 nnoremap <Leader>e :bn<CR>
 nnoremap <Leader>w :bd<CR>
 
-map <C-P> :GFiles<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <C-p> <cmd>Telescope git_files<cr>
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
