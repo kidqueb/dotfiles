@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+	Plug 'alvan/vim-closetag'
   Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-surround'
   Plug 'jiangmiao/auto-pairs'
@@ -14,6 +15,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'hrsh7th/nvim-compe'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+	Plug 'mattn/emmet-vim'
 call plug#end()
 
 " base stuff.....
@@ -47,6 +51,16 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
+
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
 " Keys
 nnoremap <C-S> :w<CR>
 nnoremap <C-J> <C-W><C-J>
@@ -57,7 +71,7 @@ nnoremap <Leader>q :bp<CR>
 nnoremap <Leader>e :bn<CR>
 nnoremap <Leader>w :bd<CR>
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>GFiles<cr>
 nnoremap <C-p> <cmd>Telescope git_files<cr>
 
 set completeopt=menuone,noselect
@@ -81,9 +95,37 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 " Tailwind Language Server
 " https://www.reddit.com/r/neovim/comments/locmsb/help_setting_up_builtin_lsp_for_csstailwindcss/go7kg8j/?utm_source=reddit&utm_medium=web2x&context=3
 
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Prettier 
+augroup END
+
 lua << EOF
 local lspconfig = require'lspconfig'
-lspconfig.tsserver.setup {}
+
+local on_attach = function (client, bufnr)
+	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+	-- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+end
+
+lspconfig.tsserver.setup { on_attach=on_attach }
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
