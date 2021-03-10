@@ -31,7 +31,15 @@ set number relativenumber
 set so=100
 set splitbelow
 set splitright
-set signcolumn=yes:1
+set signcolumn=yes
+set nohlsearch
+set hidden
+set nobackup
+set cmdheight=1
+set updatetime=50
+set shortmess+=c
+set smartindent
+
 
 let g:NERDCreateDefaultMappings = 1
 
