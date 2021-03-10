@@ -1,23 +1,24 @@
 call plug#begin('~/.vim/plugged')
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-	Plug 'mg979/vim-visual-multi'
-	Plug 'alvan/vim-closetag'
+  Plug 'mg979/vim-visual-multi'
+  Plug 'alvan/vim-closetag'
   Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-sleuth'
   Plug 'jiangmiao/auto-pairs'
   Plug 'preservim/nerdcommenter'
   Plug 'sbdchd/neoformat'
   Plug 'pantharshit00/vim-prisma'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-	Plug 'mattn/emmet-vim'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'mattn/emmet-vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " base stuff.....
-let g:netrw_banner = 0
 let mapleader = ";"
+let g:netrw_banner = 0
 filetype plugin on
 set tabstop=2     " number of spaces that a <Tab> in the file counts for
 set softtabstop=2 " remove <Tab> symbols as it was spaces
