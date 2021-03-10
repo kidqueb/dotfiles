@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'mattn/emmet-vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'justinmk/vim-sneak'
 call plug#end()
 
 " base stuff.....
@@ -55,6 +56,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
+let g:sneak#label = 1
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
 let g:closetag_filenames = '*.html, *.xhtml, *.xml, *.js, *.jsx, *.ts, *.tsx,*.md'
 let g:closetag_regions = {
