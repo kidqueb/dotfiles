@@ -14,7 +14,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'mattn/emmet-vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'justinmk/vim-sneak'
+  Plug 'francoiscabrol/ranger.vim'
+  Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 
 " base stuff.....
@@ -40,7 +41,6 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 set smartindent
-
 
 let g:NERDCreateDefaultMappings = 1
 
@@ -79,7 +79,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>q :bp<CR>
 nnoremap <Leader>e :bn<CR>
 nnoremap <Leader>w :bd<CR>
-
+nnoremap <Leader>fa <cmd>Ag<cr>
 nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <C-p> <cmd>GFiles<cr>
 
