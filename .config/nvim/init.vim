@@ -41,6 +41,7 @@ set cmdheight=1
 set updatetime=50
 set shortmess+=c
 set smartindent
+set clipboard=unnamed
 
 let g:NERDCreateDefaultMappings = 1
 
