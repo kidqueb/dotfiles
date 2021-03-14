@@ -1,3 +1,10 @@
+"=======================
+" Theme
+set termguicolors
+let ayucolor="mirage"
+colorscheme ayu
+highlight Comment cterm=italic gui=italic
+
 call plug#begin('~/.vim/plugged')
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'mg979/vim-visual-multi'
@@ -77,9 +84,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <Leader>q :bp<CR>
-nnoremap <Leader>e :bn<CR>
-nnoremap <Leader>w :bd<CR>
+nnoremap <Leader>q :bp<cr>
+nnoremap <Leader>e :bn<cr>
+nnoremap <Leader>w :bd<cr>
+nnoremap <Leader>W :w\|bd<cr>
 nnoremap <Leader>fa <cmd>Ag<cr>
 nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <C-p> <cmd>GFiles<cr>
@@ -151,9 +159,4 @@ nmap <leader>rn <Plug>(coc-rename)
 " let g:echodoc#enable_at_startup = 1
 " let g:echodoc#type = 'virtual'
 
-"=======================
-" Theme
-set termguicolors
-let ayucolor="mirage"
-colorscheme ayu
-highlight Comment cterm=italic gui=italic
+
