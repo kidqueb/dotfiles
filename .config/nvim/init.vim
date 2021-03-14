@@ -49,6 +49,8 @@ set updatetime=50
 set shortmess+=c
 set smartindent
 set clipboard=unnamed
+set nowrap           " do not automatically wrap on load
+set formatoptions-=t " do not automatically wrap text when typing
 
 let g:NERDCreateDefaultMappings = 1
 
@@ -64,8 +66,11 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-let g:sneak#label = 1
-let g:fzf_layout = { 'window': { 'width': 1, 'height': 1 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window right:40%:noborder --layout reverse --margin=1,1"
+command! -bang -nargs=? -complete=dir Files
+     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'xoffset': 0.1, 'yoffset': 0.1, 'border': 'none' } } 
+
 let g:closetag_filenames = '*.html, *.xhtml, *.xml, *.js, *.jsx, *.ts, *.tsx,*.md'
 let g:closetag_regions = {
     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
