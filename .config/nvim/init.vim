@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'francoiscabrol/ranger.vim'
-  Plug 'rbgrouleff/bclose.vim'
+  Plug 'rbgrouleff/bclose.vim' " ranger dependency
 call plug#end()
 
 " base stuff.....
@@ -67,8 +67,7 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 let $FZF_DEFAULT_OPTS="--ansi --preview-window right:40%:noborder --layout reverse --margin=1,1"
-command! -bang -nargs=? -complete=dir Files
-     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'xoffset': 0.1, 'yoffset': 0.1, 'border': 'none' } } 
 
 let g:closetag_filenames = '*.html, *.xhtml, *.xml, *.js, *.jsx, *.ts, *.tsx,*.md'
@@ -96,6 +95,10 @@ nnoremap <Leader>W :w\|bd<cr>
 nnoremap <Leader>fa <cmd>Ag<cr>
 nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <C-p> <cmd>GFiles<cr>
+
+" Allow Emmet tab expansion in Insert mode
+let g:user_emmet_expandabbr_key='<Tab>'
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 augroup fmt
   autocmd!
