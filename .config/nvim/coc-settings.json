@@ -6,6 +6,8 @@
     "typescriptreact"
   ],
   "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true,
-  "diagnostic.refreshOnInsertMode": true
+  "diagnostic.refreshOnInsertMode": true,
+  "suggest.enablePreview": true,
+  "suggest.removeDuplicateItems": true,
+  "codeLens.enable": true
 }
