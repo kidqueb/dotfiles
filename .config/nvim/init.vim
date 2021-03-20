@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'mattn/emmet-vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'Shougo/echodoc.vim'
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim' " ranger dependency
 call plug#end()
@@ -162,10 +163,11 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'virtual'
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'virtual'
 
 
