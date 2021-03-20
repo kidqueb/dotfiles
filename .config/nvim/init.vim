@@ -51,6 +51,7 @@ set smartindent
 set clipboard=unnamed
 set nowrap           " do not automatically wrap on load
 set formatoptions-=t " do not automatically wrap text when typing
+set mouse=a
 
 let g:NERDCreateDefaultMappings = 1
 
