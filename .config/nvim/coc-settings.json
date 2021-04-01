@@ -8,6 +8,5 @@
   "tsserver.formatOnType": true,
   "diagnostic.refreshOnInsertMode": true,
   "suggest.enablePreview": true,
-  "suggest.removeDuplicateItems": true,
-  "codeLens.enable": true
+  "suggest.removeDuplicateItems": true
 }
