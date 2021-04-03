@@ -1,8 +1,8 @@
 "=======================
 " Theme
 set termguicolors
-let ayucolor="mirage"
-"let ayucolor="light"
+"let ayucolor="mirage"
+let ayucolor="light"
 colorscheme ayu
 highlight Comment cterm=italic gui=italic
 
@@ -18,13 +18,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'sbdchd/neoformat'
   Plug 'pantharshit00/vim-prisma'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
   Plug 'mattn/emmet-vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'Shougo/echodoc.vim'
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim' " ranger dependency
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " base stuff.....
@@ -95,9 +96,14 @@ nnoremap <Leader>q :bp<cr>
 nnoremap <Leader>e :bn<cr>
 nnoremap <Leader>w :bd<cr>
 nnoremap <Leader>W :w\|bd<cr>
-nnoremap <Leader>fa <cmd>Ag<cr>
-nnoremap <leader>ff <cmd>Files<cr>
-nnoremap <C-p> <cmd>GFiles<cr>
+
+" Telescope
+nnoremap <C-p> <cmd>Telescope git_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fm <cmd>Telescope find_marks<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Quickfix lists
 nnoremap <C-k> :cnext<CR>
