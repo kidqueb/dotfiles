@@ -18,7 +18,6 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/opt/openssl@1.1/lib/pkgconfi
 alias ls="ls -GFh"
 alias rm="trash"
 alias code="nvim"
-alias kitty="/Applications/Visual Studio Code.app"
 alias dotfiles='/usr/bin/git --git-dir=/Users/nick/.dotfiles/ --work-tree=/Users/nick'
 
 function set-title-precmd() {

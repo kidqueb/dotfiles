@@ -2,6 +2,7 @@
 " Theme
 set termguicolors
 let ayucolor="mirage"
+"let ayucolor="light"
 colorscheme ayu
 highlight Comment cterm=italic gui=italic
 
@@ -97,6 +98,37 @@ nnoremap <Leader>W :w\|bd<cr>
 nnoremap <Leader>fa <cmd>Ag<cr>
 nnoremap <leader>ff <cmd>Files<cr>
 nnoremap <C-p> <cmd>GFiles<cr>
+
+" Quickfix lists
+nnoremap <C-k> :cnext<CR>
+nnoremap <C-j> :cprev<CR>
+nnoremap <leader>k :lnext<CR>
+nnoremap <leader>j :lprev<CR>
+nnoremap <C-q> :call ToggleQFList(1)<CR>
+nnoremap <leader>q :call ToggleQFList(0)<CR>
+
+let g:qf_l = 0
+let g:qf_g = 0
+
+fun! ToggleQFList(global)
+    if a:global
+        if g:qf_g == 1
+            let g:qf_g = 0
+            cclose
+        else
+            let g:qf_g = 1
+            copen
+        end
+    else
+        if g:qf_l == 1
+            let g:qf_l = 0
+            lclose
+        else
+            let g:qf_l = 1
+            lopen
+        end
+    endif
+endfun
 
 " Allow Emmet tab expansion in Insert mode
 let g:user_emmet_expandabbr_key='<Tab>'
