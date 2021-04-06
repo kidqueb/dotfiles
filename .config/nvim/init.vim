@@ -1,8 +1,6 @@
-"=======================
-" Theme
+source $HOME/.config/nvim/theme.vim
+
 set termguicolors
-let ayucolor="mirage"
-colorscheme ayu
 highlight Comment cterm=italic gui=italic
 
 call plug#begin('~/.vim/plugged')
@@ -22,9 +20,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/echodoc.vim'
   Plug 'francoiscabrol/ranger.vim'
   Plug 'rbgrouleff/bclose.vim' " ranger dependency
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim' 
 call plug#end()
 
 " base stuff.....
@@ -104,12 +101,8 @@ nnoremap <Leader>w :bd<cr>
 nnoremap <Leader>W :w\|bd<cr>
 
 " Telescope
-nnoremap <C-p> <cmd>Telescope git_files<cr>
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fm <cmd>Telescope find_marks<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <C-p> <cmd>:GFiles<cr>
+nnoremap <leader>ff <cmd>:Files<cr>
 
 " Quickfix lists
 nnoremap <C-k> :cnext<CR>

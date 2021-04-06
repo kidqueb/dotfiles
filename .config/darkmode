@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rm ~/.config/kitty/theme.conf
+cp ~/.config/kitty/theme.dark.conf ~/.config/kitty/theme.conf
+
+rm ~/.config/nvim/theme.vim
+cp ~/.config/nvim/theme.dark.vim ~/.config/nvim/theme.vim
+
+killall kitty
