@@ -1,8 +1,7 @@
 "=======================
 " Theme
 set termguicolors
-"let ayucolor="mirage"
-let ayucolor="light"
+let ayucolor="mirage"
 colorscheme ayu
 highlight Comment cterm=italic gui=italic
 
@@ -55,6 +54,13 @@ set clipboard=unnamed
 set nowrap           " do not automatically wrap on load
 set formatoptions-=t " do not automatically wrap text when typing
 set mouse=a
+
+autocmd FileType javascript setlocal formatprg=prettier_d\ --parser=babel
+autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
+" https://github.com/sbdchd/neoformat/issues/25
+let g:neoformat_only_msg_on_error = 1
 
 let g:NERDCreateDefaultMappings = 1
 
@@ -140,10 +146,10 @@ endfun
 let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Prettier 
-augroup END
+"augroup fmt
+  "autocmd!
+  "autocmd BufWritePre * undojoin | Prettier 
+"augroup END
 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
@@ -185,8 +191,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>ag  <Plug>(coc-codeaction)
+nmap <leader>af  <Plug>(coc-fix-current)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

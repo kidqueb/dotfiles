@@ -1,11 +1,5 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "tsserver.formatOnType": true,
+  "tailwindCSS.headwind.runOnSave": false,
   "diagnostic.refreshOnInsertMode": true,
   "suggest.enablePreview": true,
   "suggest.removeDuplicateItems": true
