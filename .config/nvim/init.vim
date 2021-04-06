@@ -10,8 +10,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-sleuth'
+  Plug 'tpope/vim-commentary'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'preservim/nerdcommenter'
   Plug 'sbdchd/neoformat'
   Plug 'pantharshit00/vim-prisma'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -58,8 +58,6 @@ autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 let g:neoformat_try_formatprg = 1
 " https://github.com/sbdchd/neoformat/issues/25
 let g:neoformat_only_msg_on_error = 1
-
-let g:NERDCreateDefaultMappings = 1
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
