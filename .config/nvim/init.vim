@@ -52,13 +52,6 @@ set nowrap           " do not automatically wrap on load
 set formatoptions-=t " do not automatically wrap text when typing
 set mouse=a
 
-autocmd FileType javascript setlocal formatprg=prettier_d\ --parser=babel
-autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
-" Use formatprg when available
-let g:neoformat_try_formatprg = 1
-" https://github.com/sbdchd/neoformat/issues/25
-let g:neoformat_only_msg_on_error = 1
-
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -70,6 +63,13 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " Typescript
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" Formatting
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Prettier 
+augroup END
+
 
 let $FZF_DEFAULT_OPTS="--ansi --preview-window right:40%:noborder --layout reverse --margin=1,1"
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -137,11 +137,6 @@ endfun
 let g:user_emmet_expandabbr_key='<Tab>'
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
-"augroup fmt
-  "autocmd!
-  "autocmd BufWritePre * undojoin | Prettier 
-"augroup END
-
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 " Coc
@@ -182,7 +177,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>ag  <Plug>(coc-codeaction)
+nmap <leader>aa  <Plug>(coc-codeaction)
 nmap <leader>af  <Plug>(coc-fix-current)
 
 " Use K to show documentation in preview window.
