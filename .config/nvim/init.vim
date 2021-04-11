@@ -95,7 +95,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>q :bp<cr>
 nnoremap <Leader>e :bn<cr>
-nnoremap <Leader>w :bd<cr>
+nnoremap <Leader>q :bd<cr>
 nnoremap <Leader>W :w\|bd<cr>
 
 " Telescope
@@ -108,7 +108,6 @@ nnoremap <C-j> :cprev<CR>
 nnoremap <leader>k :lnext<CR>
 nnoremap <leader>j :lprev<CR>
 nnoremap <C-q> :call ToggleQFList(1)<CR>
-nnoremap <leader>q :call ToggleQFList(0)<CR>
 
 let g:qf_l = 0
 let g:qf_g = 0
