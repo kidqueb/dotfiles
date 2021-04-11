@@ -95,7 +95,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>q :bp<cr>
 nnoremap <Leader>e :bn<cr>
-nnoremap <Leader>q :bd<cr>
+nnoremap <Leader>w :bd<cr>
 nnoremap <Leader>W :w\|bd<cr>
 
 " Telescope
