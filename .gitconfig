@@ -1,0 +1,5 @@
+[user]
+	name = Nick Quebbeman
+	email = n.quebb@gmail.com
+[core]
+	excludesfile = /Users/nick/.gitignore_global
