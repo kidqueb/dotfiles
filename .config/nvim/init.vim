@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-commentary'
-  Plug 'jiangmiao/auto-pairs'
   Plug 'sbdchd/neoformat'
   Plug 'pantharshit00/vim-prisma'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -71,21 +70,14 @@ augroup fmt
 augroup END
 
 
-let $FZF_DEFAULT_OPTS="--ansi --preview-window right:40%:noborder --layout reverse --margin=1,1"
 command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 let g:fzf_layout = { 'window': { 'width': 1, 'height': 1, 'xoffset': 0.1, 'yoffset': 0.1, 'border': 'none' } } 
 
-let g:closetag_filenames = '*.html, *.xhtml, *.xml, *.js, *.jsx, *.ts, *.tsx,*.md'
+let g:closetag_filenames = '*.html, *.xhtml, *.xml, *.jsx, *.tsx,*.md'
 let g:closetag_regions = {
     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
     \ 'javascript.jsx': 'jsxRegion',
     \ }
-let g:AutoPairs = {
-    \ '(': ')',
-    \ '[': ']',
-    \ '{': '}',
-    \ '`': '`'
-    \}
 
 " Keys
 nnoremap <C-S> :w<CR>
@@ -98,9 +90,10 @@ nnoremap <Leader>e :bn<cr>
 nnoremap <Leader>w :bd<cr>
 nnoremap <Leader>W :w\|bd<cr>
 
-" Telescope
+" FZF 
 nnoremap <C-p> <cmd>:GFiles<cr>
 nnoremap <leader>ff <cmd>:Files<cr>
+nnoremap <leader>ag <cmd>:Ag<cr>
 
 " Quickfix lists
 nnoremap <C-k> :cnext<CR>

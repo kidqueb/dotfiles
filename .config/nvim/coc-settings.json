@@ -1,4 +1,9 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "typescriptreact",
+    "prisma"
+  ],
   "tailwindCSS.headwind.runOnSave": false,
   "diagnostic.refreshOnInsertMode": true,
   "suggest.enablePreview": true,
